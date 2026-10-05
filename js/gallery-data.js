@@ -6,10 +6,6 @@ window.GALLERY = {
       "label": "Curtains",
       "photos": [
         {
-          "src": "images/gallery/curtains/curtain.jpg",
-          "title": "Curtain"
-        },
-        {
           "src": "images/gallery/curtains/Curtain_Blind2.jpg",
           "title": "Curtain Blind2"
         },
@@ -28,6 +24,10 @@ window.GALLERY = {
         {
           "src": "images/gallery/curtains/Curtain_Blind6.jpg",
           "title": "Curtain Blind6"
+        },
+        {
+          "src": "images/gallery/curtains/curtain.jpg",
+          "title": "Curtain"
         }
       ],
       "videos": []
@@ -36,14 +36,6 @@ window.GALLERY = {
       "key": "roller",
       "label": "Roller blinds",
       "photos": [
-        {
-          "src": "images/gallery/roller/roller.jpg",
-          "title": "Roller"
-        },
-        {
-          "src": "images/gallery/roller/roller_blind7.jpg",
-          "title": "Roller blind7"
-        },
         {
           "src": "images/gallery/roller/roller_blind2.jpg",
           "title": "Roller blind2"
@@ -63,6 +55,14 @@ window.GALLERY = {
         {
           "src": "images/gallery/roller/roller_blind6.jpg",
           "title": "Roller blind6"
+        },
+        {
+          "src": "images/gallery/roller/roller_blind7.jpg",
+          "title": "Roller blind7"
+        },
+        {
+          "src": "images/gallery/roller/roller.jpg",
+          "title": "Roller"
         }
       ],
       "videos": []
@@ -105,10 +105,6 @@ window.GALLERY = {
       "label": "Wooden",
       "photos": [
         {
-          "src": "images/gallery/wooden/wooden.jpg",
-          "title": "Wooden"
-        },
-        {
           "src": "images/gallery/wooden/Wooden_Blind_5.jpg",
           "title": "Wooden Blind"
         },
@@ -123,6 +119,10 @@ window.GALLERY = {
         {
           "src": "images/gallery/wooden/wooden_blind4.jpg",
           "title": "Wooden blind4"
+        },
+        {
+          "src": "images/gallery/wooden/wooden.jpg",
+          "title": "Wooden"
         }
       ],
       "videos": []
