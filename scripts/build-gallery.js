@@ -4,6 +4,9 @@
   You can also run it yourself:  node scripts/build-gallery.js
 
   PHOTOS  : every image inside  images/gallery/<category>/
+            Photos are renamed automatically to  PNS_EnterPrises-<Section>1, PNS_EnterPrises-<Section>2 ...
+            (for example PNS_EnterPrises-Roller_Blinds1.jpg). Files that already have such a name keep it,
+            and a new photo gets the next free number. Run with  --no-rename  to skip renaming.
   VIDEOS  : every YouTube link inside  videos/<category>.txt  (one link per line)
   PRODUCT PICTURES : one image per product inside  images/products/  named after the product,
                      for example roller.jpg, roman.webp, motorized.png (the "What we make" list)
@@ -20,6 +23,26 @@ const VID_DIR = path.join(ROOT, "videos");
 const PROD_DIR = path.join(ROOT, "images", "products");
 const OUT = path.join(ROOT, "js", "gallery-data.js");
 const IMG_EXT = /\.(jpe?g|png|webp|avif|gif)$/i;
+
+// Photo file names: PNS_EnterPrises-<Section name><number>.<ext>, for example PNS_EnterPrises-Roller_Blinds1.jpg
+const FILE_PREFIX = "PNS_EnterPrises-";
+const DO_RENAME = !process.argv.includes("--no-rename");
+// Section name used inside the file name. A folder that is not listed here gets its folder name, capitalised
+// (a folder called  wall-paper  becomes  Wall_Paper).
+const FILE_NAMES = {
+  motorized: "Motorized_Blinds",
+  curtains: "Curtains",
+  roller: "Roller_Blinds",
+  roman: "Roman_Blinds",
+  vertical: "Vertical_Blinds",
+  honeycomb: "Honeycomb_Blinds",
+  chick: "Chick_Blinds",
+  skylight: "Skylight_Blinds",
+  awning: "Awnings",
+  film: "Window_Film",
+  repair: "Repairs",
+  wooden: "Wooden_Blinds"
+};
 
 // Known categories: order and display name. Any other folder you create is added at the end.
 const KNOWN = [
@@ -44,6 +67,8 @@ function listDirs(dir) {
 function prettyKey(k) { return k.charAt(0).toUpperCase() + k.slice(1).replace(/[-_]+/g, " "); }
 
 function titleFromFile(name) {
+  // Renamed photos (PNS_EnterPrises-Roller_Blinds1.jpg) get no caption: the section heading already says what they are.
+  if (name.toLowerCase().startsWith(FILE_PREFIX.toLowerCase())) return "";
   // Camera and WhatsApp file names (IMG_9384, WhatsApp Image 2026...) make bad captions: show none.
   if (/^(img|dsc|dscn|pxl|photo|image|whatsapp|screenshot|vid|mvimg)[\s_-]*\d/i.test(name) || /^\d+\.[^.]+$/.test(name)) return "";
   let t = name.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ").replace(/\s+\d+$/, "").trim();
@@ -60,13 +85,43 @@ function addedTime(file) {
   return fs.statSync(file).mtimeMs;
 }
 
+function fileBaseFor(cat) {
+  const name = FILE_NAMES[cat] || cat.split(/[-_\s]+/).filter(Boolean).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join("_");
+  return FILE_PREFIX + name;
+}
+
+function trailingNumber(file) { const m = file.replace(/\.[^.]+$/, "").match(/(\d+)$/); return m ? parseInt(m[1], 10) : 0; }
+
+// Renames every photo in images/gallery/<cat>/ to  PNS_EnterPrises-<Section><n>.<ext>.
+// Photos that already have such a name are left alone. Others get the next free number, oldest first,
+// so numbers never repeat, even after you delete a photo.
+function renamePhotos(cat) {
+  const dir = path.join(IMG_DIR, cat);
+  if (!fs.existsSync(dir)) return;
+  const base = fileBaseFor(cat);
+  const own = new RegExp("^" + base.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(\\d+)\\.[^.]+$", "i");
+  const files = fs.readdirSync(dir).filter(f => IMG_EXT.test(f));
+  let max = 0;
+  files.forEach(f => { const m = f.match(own); if (m) max = Math.max(max, parseInt(m[1], 10)); });
+  const todo = files.filter(f => !own.test(f))
+    .map(f => ({ f, t: addedTime(path.join(dir, f)), n: trailingNumber(f) }))   // read the time BEFORE renaming
+    .sort((a, b) => a.t - b.t || a.n - b.n || a.f.localeCompare(b.f, undefined, { numeric: true }));
+  todo.forEach(o => {
+    const target = base + (++max) + path.extname(o.f).toLowerCase();
+    fs.renameSync(path.join(dir, o.f), path.join(dir, target));
+    console.log("  renamed " + cat + "/" + o.f + " -> " + target);
+  });
+}
+
 function photosFor(cat) {
   const dir = path.join(IMG_DIR, cat);
   if (!fs.existsSync(dir)) return [];
+  // Highest number first = newest photo first (a new photo always gets the next number).
+  // Photos without a number fall back to the date they were added to the repo.
   return fs.readdirSync(dir)
     .filter(f => IMG_EXT.test(f))
-    .map(f => ({ f, t: addedTime(path.join(dir, f)) }))
-    .sort((a, b) => b.t - a.t || a.f.localeCompare(b.f, undefined, { numeric: true }))
+    .map(f => ({ f, n: trailingNumber(f), t: addedTime(path.join(dir, f)) }))
+    .sort((a, b) => b.n - a.n || b.t - a.t || a.f.localeCompare(b.f, undefined, { numeric: true }))
     .map(o => ({
       src: ["images", "gallery", cat, o.f].map(encodeURIComponent).join("/"),
       title: titleFromFile(o.f)
@@ -101,6 +156,8 @@ function videosFor(cat) {
 const keys = KNOWN.map(k => k[0]);
 listDirs(IMG_DIR).concat(fs.existsSync(VID_DIR) ? fs.readdirSync(VID_DIR).filter(f => /\.txt$/i.test(f)).map(f => f.replace(/\.txt$/i, "")) : [])
   .forEach(k => { if (!keys.includes(k)) keys.push(k); });
+
+if (DO_RENAME) listDirs(IMG_DIR).forEach(renamePhotos);
 
 const labels = Object.fromEntries(KNOWN);
 const categories = keys.map(k => {

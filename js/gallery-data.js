@@ -6,28 +6,28 @@ window.GALLERY = {
       "label": "Curtains",
       "photos": [
         {
-          "src": "images/gallery/curtains/Curtain_Blind2.jpg",
-          "title": "Curtain Blind2"
+          "src": "images/gallery/curtains/PNS_EnterPrises-Curtains6.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/curtains/Curtain_Blind3.jpg",
-          "title": "Curtain Blind3"
+          "src": "images/gallery/curtains/PNS_EnterPrises-Curtains5.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/curtains/Curtain_Blind4.jpg",
-          "title": "Curtain Blind4"
+          "src": "images/gallery/curtains/PNS_EnterPrises-Curtains4.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/curtains/Curtain_Blind5.jpg",
-          "title": "Curtain Blind5"
+          "src": "images/gallery/curtains/PNS_EnterPrises-Curtains3.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/curtains/Curtain_Blind6.jpg",
-          "title": "Curtain Blind6"
+          "src": "images/gallery/curtains/PNS_EnterPrises-Curtains2.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/curtains/curtain.jpg",
-          "title": "Curtain"
+          "src": "images/gallery/curtains/PNS_EnterPrises-Curtains1.jpg",
+          "title": ""
         }
       ],
       "videos": []
@@ -37,32 +37,32 @@ window.GALLERY = {
       "label": "Roller blinds",
       "photos": [
         {
-          "src": "images/gallery/roller/roller_blind2.jpg",
-          "title": "Roller blind2"
+          "src": "images/gallery/roller/PNS_EnterPrises-Roller_Blinds7.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/roller/roller_blind3.jpg",
-          "title": "Roller blind3"
+          "src": "images/gallery/roller/PNS_EnterPrises-Roller_Blinds6.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/roller/roller_blind4.jpg",
-          "title": "Roller blind4"
+          "src": "images/gallery/roller/PNS_EnterPrises-Roller_Blinds5.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/roller/roller_blind5.jpg",
-          "title": "Roller blind5"
+          "src": "images/gallery/roller/PNS_EnterPrises-Roller_Blinds4.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/roller/roller_blind6.jpg",
-          "title": "Roller blind6"
+          "src": "images/gallery/roller/PNS_EnterPrises-Roller_Blinds3.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/roller/roller_blind7.jpg",
-          "title": "Roller blind7"
+          "src": "images/gallery/roller/PNS_EnterPrises-Roller_Blinds2.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/roller/roller.jpg",
-          "title": "Roller"
+          "src": "images/gallery/roller/PNS_EnterPrises-Roller_Blinds1.jpg",
+          "title": ""
         }
       ],
       "videos": []
@@ -72,8 +72,8 @@ window.GALLERY = {
       "label": "Roman blinds",
       "photos": [
         {
-          "src": "images/gallery/roman/roman.jpg",
-          "title": "Roman"
+          "src": "images/gallery/roman/PNS_EnterPrises-Roman_Blinds1.jpg",
+          "title": ""
         }
       ],
       "videos": []
@@ -83,8 +83,8 @@ window.GALLERY = {
       "label": "Sun control and decorative film",
       "photos": [
         {
-          "src": "images/gallery/film/film.jpg",
-          "title": "Film"
+          "src": "images/gallery/film/PNS_EnterPrises-Window_Film1.jpg",
+          "title": ""
         }
       ],
       "videos": []
@@ -94,8 +94,8 @@ window.GALLERY = {
       "label": "Monsoon",
       "photos": [
         {
-          "src": "images/gallery/monsoon/monsoon.jpg",
-          "title": "Monsoon"
+          "src": "images/gallery/monsoon/PNS_EnterPrises-Monsoon1.jpg",
+          "title": ""
         }
       ],
       "videos": []
@@ -105,24 +105,24 @@ window.GALLERY = {
       "label": "Wooden",
       "photos": [
         {
-          "src": "images/gallery/wooden/Wooden_Blind_5.jpg",
-          "title": "Wooden Blind"
+          "src": "images/gallery/wooden/PNS_EnterPrises-Wooden_Blinds5.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/wooden/wooden_blind1.jpg",
-          "title": "Wooden blind1"
+          "src": "images/gallery/wooden/PNS_EnterPrises-Wooden_Blinds4.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/wooden/wooden_blind3.jpg",
-          "title": "Wooden blind3"
+          "src": "images/gallery/wooden/PNS_EnterPrises-Wooden_Blinds3.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/wooden/wooden_blind4.jpg",
-          "title": "Wooden blind4"
+          "src": "images/gallery/wooden/PNS_EnterPrises-Wooden_Blinds2.jpg",
+          "title": ""
         },
         {
-          "src": "images/gallery/wooden/wooden.jpg",
-          "title": "Wooden"
+          "src": "images/gallery/wooden/PNS_EnterPrises-Wooden_Blinds1.jpg",
+          "title": ""
         }
       ],
       "videos": []
