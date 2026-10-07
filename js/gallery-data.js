@@ -30,7 +30,13 @@ window.GALLERY = {
           "title": ""
         }
       ],
-      "videos": []
+      "videos": [
+        {
+          "youtube": "HnrXnpFkedY",
+          "vertical": false,
+          "title": "Motorized curtain demo"
+        }
+      ]
     },
     {
       "key": "roller",
